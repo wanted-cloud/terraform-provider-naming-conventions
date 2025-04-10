@@ -1,7 +1,7 @@
 terraform {
   required_providers {
     conventions = {
-      source = "github.com/wanted-cloud/conventions"
+      source = "registry.terraform.io/wanted-cloud/naming-conventions"
     }
   }
 }

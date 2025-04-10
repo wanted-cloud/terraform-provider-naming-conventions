@@ -1,4 +1,4 @@
-module github.com/wanted-cloud/terraform-provider-conventions
+module github.com/wanted-cloud/terraform-provider-naming-conventions
 
 go 1.23.7
 
