@@ -35,7 +35,7 @@ type ExampleTimeProvider struct {
 
 // Metadata returns the provider type name.
 func (p *ExampleTimeProvider) Metadata(_ context.Context, _ provider.MetadataRequest, resp *provider.MetadataResponse) {
-	resp.TypeName = "naming_conventions"
+	resp.TypeName = "conventions"
 	resp.Version = p.version
 }
 
@@ -60,5 +60,5 @@ func (p *ExampleTimeProvider) Resources(_ context.Context) []func() resource.Res
 
 // Functions defines the functions implemented in the provider.
 func (p *ExampleTimeProvider) Functions(_ context.Context) []func() function.Function {
-	return nil
+	return []func() function.Function{}
 }

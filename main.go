@@ -10,7 +10,7 @@ import (
 
 	"github.com/hashicorp/terraform-plugin-framework/providerserver"
 
-	"github.com/wanted-cloud/terraform-provider-naming-conventions/internal/provider"
+	"github.com/wanted-cloud/terraform-provider-conventions/internal/provider"
 )
 
 // Run "go generate" to format example terraform files and generate the docs for the registry/website
@@ -44,7 +44,7 @@ func main() {
 		// provider address is used in this tutorial in conjunction with a
 		// specific Terraform CLI configuration for manual development testing
 		// of this provider.
-		Address: "registry.terraform.io/wanted-cloud/naming-conventions",
+		Address: "github.com/wanted-cloud/conventions",
 		Debug:   debug,
 	}
 
