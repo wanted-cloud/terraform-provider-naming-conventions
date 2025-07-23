@@ -6,8 +6,23 @@ terraform {
   }
 }
 
-provider "conventions" {}
+provider "conventions" {
+  metadata = {}
+}
 
-output "timestamp" {
-  value = provider::conventions::rfc3339_parse()
+data "conventions_generate" "test" {
+  //provider = conventions
+  example_attribute = "example_value"
+}
+
+output "generate_test_output" {
+  description = "Output from the naming-conventions_generate data source"
+  value = provider::conventions::generate("azurerm_resource_group", {
+    a = "test"
+  })
+}
+
+output "data_generate_test_output" {
+  description = "Output from the conventions_generate data source"
+  value       = data.conventions_generate.test
 }
