@@ -7,18 +7,26 @@ terraform {
 }
 
 provider "conventions" {
-  metadata = {}
+  metadata = {
+    location = "gwc"
+  }
+  patterns = {
+      azurerm_resource_group = {
+        pattern = "{{.name}}-rg-{{.location}}"
+      }
+    }
 }
 
 data "conventions_generate" "test" {
-  //provider = conventions
-  example_attribute = "example_value"
+  type = "azurerm_resource_group"
+  name = "test"
 }
 
 output "generate_test_output" {
   description = "Output from the naming-conventions_generate data source"
   value = provider::conventions::generate("azurerm_resource_group", {
-    a = "test"
+    name = "test"
+    location = "eastus"
   })
 }
 

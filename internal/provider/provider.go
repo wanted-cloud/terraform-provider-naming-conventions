@@ -45,9 +45,20 @@ func (p *NamingConventionsProvider) Schema(_ context.Context, _ provider.SchemaR
 	resp.Schema = schema.Schema{
 		Attributes: map[string]schema.Attribute{
 			"metadata": schema.MapAttribute{
-				Optional:    false,
-				Required:    true,
+				Optional: true,
+				//Required:    true,
 				ElementType: types.StringType,
+			},
+			"patterns": schema.MapNestedAttribute{
+				Optional: true,
+				//Required:    true,
+				NestedObject: schema.NestedAttributeObject{
+					Attributes: map[string]schema.Attribute{
+						"pattern": schema.StringAttribute{
+							Required: true,
+						},
+					},
+				},
 			},
 		},
 	}
@@ -55,13 +66,14 @@ func (p *NamingConventionsProvider) Schema(_ context.Context, _ provider.SchemaR
 
 // Configure prepares an API client for data sources and resources.
 func (p *NamingConventionsProvider) Configure(ctx context.Context, req provider.ConfigureRequest, resp *provider.ConfigureResponse) {
-
+	//resp.DataSourceData
 }
 
 // DataSources defines the data sources implemented in the provider.
 func (p *NamingConventionsProvider) DataSources(_ context.Context) []func() datasource.DataSource {
 	return []func() datasource.DataSource{
 		NewGenerateDataSource,
+		NewGenerateResourceDataSource,
 	}
 }
 
